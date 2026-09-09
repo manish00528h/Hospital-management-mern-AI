@@ -14,4 +14,7 @@ app.listen(process.env.PORT, ()=>{
     
 });
 // At the bottom of backend/index.js (or server.js)
+app.get('/', (req, res) => {
+  res.send('Hospital Management API is running...');
+});
 module.exports = app;
