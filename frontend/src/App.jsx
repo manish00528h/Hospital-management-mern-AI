@@ -12,18 +12,16 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { Context } from "./main";
 import Login from "./Pages/Login";
- import AppointmentStatus from "./pages/AppointmentStatus";
+import AppointmentStatus from "./pages/AppointmentStatus";
 
 const App = () => {
-  const {// isAuthenticated, 
-       setIsAuthenticated, setUser } =
-    useContext(Context);
+  const { setIsAuthenticated, setUser } = useContext(Context);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/v1/user/patient/me",
+          "https://hospital-management-mern-ai.vercel.app/api/v1/user/patient/me",
           {
             withCredentials: true,
           }
@@ -36,7 +34,7 @@ const App = () => {
       }
     };
     fetchUser();
-  }, [setIsAuthenticated, setUser,]);
+  }, [setIsAuthenticated, setUser]);
 
   return (
     <>
@@ -49,7 +47,6 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/status" element={<AppointmentStatus />} />
-          
         </Routes>
         <Footer />
         <ToastContainer position="top-center" />
