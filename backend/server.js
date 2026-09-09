@@ -13,3 +13,5 @@ app.listen(process.env.PORT, ()=>{
     console.log(`server listening on port ${process.env.PORT}`);
     
 });
+// At the bottom of backend/index.js (or server.js)
+module.exports = app;
