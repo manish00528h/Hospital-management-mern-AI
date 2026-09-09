@@ -1,26 +1,6 @@
 import app from "./app.js";
 import cloudinary from "cloudinary";
 
-cloudinary.v2.config({
-    cloud_name : process.env.CLOUDINARY_CLOUD_NAME,
-    api_key : process.env.CLOUDINARY_API_KEY,
-    api_secret : process.env.CLOUDINARY_API_SECRET,
-});
-
-
-
-app.listen(process.env.PORT, ()=>{
-    console.log(`server listening on port ${process.env.PORT}`);
-    
-});
-// At the bottom of backend/index.js (or server.js)
-app.get('/', (req, res) => {
-  res.send('Hospital Management API is running...');
-});
-//deploy for vercel
-import app from "./app.js";
-import cloudinary from "cloudinary";
-
 // Configure Cloudinary
 cloudinary.v2.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -33,13 +13,12 @@ app.get("/", (req, res) => {
   res.send("Hospital Management API is running...");
 });
 
-// Only listen when running locally in development
+// Only start the listener during local development
 if (process.env.NODE_ENV !== "production") {
   app.listen(process.env.PORT || 4000, () => {
     console.log(`Server listening on port ${process.env.PORT || 4000}`);
   });
 }
 
-// Export app for Vercel Serverless Function (ESM format)
+// Export for ES Module format (do NOT add module.exports)
 export default app;
-module.exports = app;
